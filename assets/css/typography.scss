@@ -1,0 +1,56 @@
+// General text styles.
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	color: $color-text;
+}
+
+// Header styles.
+h2 {
+	font-size: 44px;
+	line-height: 60px;
+	padding-bottom: 30px;
+}
+
+// Link styles.
+a {
+	text-decoration: none;
+	color: $color-link;
+
+	&:hover {
+		text-decoration: underline;
+		color: $color-link-hover;
+	}
+}
+
+// Text styles.
+p {
+	color: $grey;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 36px;
+}
+
+@media all and (max-width: 740px) {
+	h2 {
+		font-size: 36px;
+		line-height: 45px;
+	}
+
+	p {
+		font-size: 16px;
+		line-height: 30px;
+	}
+}
+
+@media all and (max-width: 568px) {
+	h2 {
+		font-size: 32px;
+		line-height: 40px;
+		padding-bottom: 24px;
+	}
+
+	p {
+		line-height: 26px;
+	}
+}
