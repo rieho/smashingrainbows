@@ -1,0 +1,108 @@
+@import "tailwindcss";
+@import "fumadocs-ui/style.css";
+
+/*
+ * Type scale inspired by wearecollins.com
+ * Collins uses NB International — a geometric grotesque sans-serif.
+ * We use Inter as a free equivalent with similar characteristics:
+ * tight tracking on display, generous whitespace, bold hierarchy.
+ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  /* Collins-inspired type scale — fluid clamp values */
+  --text-display: clamp(3rem, 8vw, 7.5rem);
+  --text-h1: clamp(2.25rem, 5vw, 4rem);
+  --text-h2: clamp(1.75rem, 3vw, 2.75rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --text-h4: clamp(1.0625rem, 1.5vw, 1.25rem);
+  --text-body: 1.0625rem;
+  --text-small: 0.875rem;
+  --text-caption: 0.75rem;
+
+  --tracking-display: -0.04em;
+  --tracking-h1: -0.035em;
+  --tracking-h2: -0.03em;
+  --tracking-h3: -0.02em;
+  --tracking-body: -0.011em;
+  --tracking-caps: 0.1em;
+}
+
+:root {
+  --background: #fafafa;
+  --foreground: #0a0a0a;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.65;
+  letter-spacing: var(--tracking-body);
+  font-feature-settings: "ss01", "ss02", "cv01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Collins-style display typography */
+.type-display {
+  font-size: var(--text-display);
+  line-height: 0.95;
+  letter-spacing: var(--tracking-display);
+  font-weight: 600;
+}
+
+.type-h1 {
+  font-size: var(--text-h1);
+  line-height: 1.05;
+  letter-spacing: var(--tracking-h1);
+  font-weight: 600;
+}
+
+.type-h2 {
+  font-size: var(--text-h2);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-h2);
+  font-weight: 500;
+}
+
+.type-h3 {
+  font-size: var(--text-h3);
+  line-height: 1.25;
+  letter-spacing: var(--tracking-h3);
+  font-weight: 500;
+}
+
+.type-h4 {
+  font-size: var(--text-h4);
+  line-height: 1.35;
+  letter-spacing: var(--tracking-body);
+  font-weight: 500;
+}
+
+.type-small {
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+.type-caption {
+  font-size: var(--text-caption);
+  line-height: 1.5;
+}
+
+.type-caps {
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  font-weight: 500;
+}

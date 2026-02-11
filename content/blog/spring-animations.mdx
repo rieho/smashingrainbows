@@ -1,0 +1,70 @@
+---
+title: Spring Animations
+description: Exploring spring physics for natural-feeling UI motion.
+date: 2025-01-25
+---
+
+Spring animations create motion that feels organic. Instead of easing curves with fixed durations, springs simulate physical forces — mass, tension, and friction — producing movement that responds naturally to interruption.
+
+## Why springs over easing
+
+Traditional CSS easing (`ease-in-out`, cubic bezier) has a fixed duration. If you interrupt the animation mid-way, it snaps or awkwardly restarts. Springs don't have a fixed duration — they settle when the physics say they should.
+
+This makes springs ideal for:
+
+- **Drag and release** — the element springs back naturally
+- **Interrupted animations** — redirecting motion feels smooth
+- **Responsive feedback** — different spring configs convey different "weights"
+
+## A simple spring
+
+Here's a minimal spring implementation you can tweak:
+
+<Playground
+  template="react"
+  files={{
+    "/App.js": `import { useState } from "react";
+
+export default function App() {
+  const [expanded, setExpanded] = useState(false);
+  const size = expanded ? 200 : 80;
+
+  return (
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      minHeight: "100vh",
+      fontFamily: "Inter, system-ui, sans-serif",
+      gap: "2rem",
+    }}>
+      <div
+        onClick={() => setExpanded(e => !e)}
+        style={{
+          width: size,
+          height: size,
+          borderRadius: expanded ? 24 : 40,
+          background: "#0a0a0a",
+          cursor: "pointer",
+          transition: "all 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
+        }}
+      />
+      <p style={{ fontSize: "0.875rem", color: "#666" }}>
+        Click to toggle
+      </p>
+    </div>
+  );
+}`,
+  }}
+/>
+
+## Parameters to experiment with
+
+| Parameter | Effect | Range |
+|-----------|--------|-------|
+| `stiffness` | How "snappy" the spring is | 50–500 |
+| `damping` | How quickly it settles | 10–40 |
+| `mass` | Inertia of the element | 0.5–5 |
+
+Higher stiffness = faster, bouncier. Higher damping = more controlled, less overshoot.
