@@ -14,16 +14,16 @@ export default async function BlogPost(props: {
   const MDXContent = page.data.body;
 
   return (
-    <article className="mx-auto max-w-3xl px-6 py-16">
+    <article className="mx-auto max-w-3xl px-6 py-16 md:py-24">
       <Link
         href="/blog"
-        className="type-small inline-flex items-center gap-1.5 text-fd-muted-foreground hover:text-fd-foreground transition-colors mb-8"
+        className="type-caption inline-flex items-center gap-1.5 text-fd-muted-foreground hover:text-fd-foreground transition-colors mb-10"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
         Back to experiments
       </Link>
 
-      <header className="mb-12">
+      <header className="mb-14">
         {page.data.date && (
           <time className="type-caption text-fd-muted-foreground">
             {new Date(page.data.date).toLocaleDateString("en-US", {
@@ -33,9 +33,9 @@ export default async function BlogPost(props: {
             })}
           </time>
         )}
-        <h1 className="type-h1 mt-2">{page.data.title}</h1>
+        <h1 className="type-h1 mt-3">{page.data.title}</h1>
         {page.data.description && (
-          <p className="type-h4 mt-3 text-fd-muted-foreground">
+          <p className="type-h4 mt-4 text-fd-muted-foreground">
             {page.data.description}
           </p>
         )}

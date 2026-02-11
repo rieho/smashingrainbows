@@ -1,4 +1,6 @@
 import { RootProvider } from "fumadocs-ui/provider/next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
@@ -15,7 +17,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body
+        className={`${GeistSans.variable} ${GeistMono.variable}`}
+      >
         <RootProvider>{children}</RootProvider>
       </body>
     </html>

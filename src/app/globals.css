@@ -2,19 +2,56 @@
 @import "fumadocs-ui/style.css";
 
 /*
- * Type scale inspired by wearecollins.com
- * Collins uses NB International — a geometric grotesque sans-serif.
- * We use Inter as a free equivalent with similar characteristics:
- * tight tracking on display, generous whitespace, bold hierarchy.
+ * Typography system
+ * ─────────────────
+ * Tiempos Text  → headlines & display (serif)
+ * Geist         → body copy (sans-serif)
+ * Geist Mono    → captions, code, labels (monospace)
+ *
+ * Drop your Tiempos Text .woff2 files into public/fonts/
+ * and uncomment the @font-face rules below.
  */
+
+/* ── Tiempos Text @font-face ──
+ * Uncomment and adjust paths once you have the font files.
+ * The CSS variable --font-headline will pick them up automatically.
+
+@font-face {
+  font-family: "Tiempos Text";
+  src: url("/fonts/TiemposText-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tiempos Text";
+  src: url("/fonts/TiemposText-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tiempos Text";
+  src: url("/fonts/TiemposText-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+*/
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, monospace;
 
-  /* Collins-inspired type scale — fluid clamp values */
+  /* Font stacks */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-headline: "Tiempos Text", Georgia, "Times New Roman", serif;
+
+  /* Fluid type scale */
   --text-display: clamp(3rem, 8vw, 7.5rem);
   --text-h1: clamp(2.25rem, 5vw, 4rem);
   --text-h2: clamp(1.75rem, 3vw, 2.75rem);
@@ -24,12 +61,13 @@
   --text-small: 0.875rem;
   --text-caption: 0.75rem;
 
-  --tracking-display: -0.04em;
-  --tracking-h1: -0.035em;
-  --tracking-h2: -0.03em;
-  --tracking-h3: -0.02em;
+  /* Tracking */
+  --tracking-display: -0.03em;
+  --tracking-h1: -0.025em;
+  --tracking-h2: -0.02em;
+  --tracking-h3: -0.015em;
   --tracking-body: -0.011em;
-  --tracking-caps: 0.1em;
+  --tracking-caps: 0.08em;
 }
 
 :root {
@@ -49,58 +87,76 @@ body {
   font-size: var(--text-body);
   line-height: 1.65;
   letter-spacing: var(--tracking-body);
-  font-feature-settings: "ss01", "ss02", "cv01";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Collins-style display typography */
+/* ── Headline typography (Tiempos Text) ── */
+
 .type-display {
+  font-family: var(--font-headline);
   font-size: var(--text-display);
   line-height: 0.95;
   letter-spacing: var(--tracking-display);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .type-h1 {
+  font-family: var(--font-headline);
   font-size: var(--text-h1);
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: var(--tracking-h1);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .type-h2 {
+  font-family: var(--font-headline);
   font-size: var(--text-h2);
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: var(--tracking-h2);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .type-h3 {
+  font-family: var(--font-headline);
   font-size: var(--text-h3);
-  line-height: 1.25;
+  line-height: 1.3;
   letter-spacing: var(--tracking-h3);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .type-h4 {
+  font-family: var(--font-sans);
   font-size: var(--text-h4);
-  line-height: 1.35;
+  line-height: 1.4;
   letter-spacing: var(--tracking-body);
   font-weight: 500;
 }
 
+/* ── Body & utility typography ── */
+
+.type-body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.65;
+}
+
 .type-small {
+  font-family: var(--font-sans);
   font-size: var(--text-small);
   line-height: 1.5;
 }
 
+/* ── Caption typography (Geist Mono) ── */
+
 .type-caption {
+  font-family: var(--font-mono);
   font-size: var(--text-caption);
   line-height: 1.5;
 }
 
 .type-caps {
+  font-family: var(--font-mono);
   font-size: var(--text-caption);
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
